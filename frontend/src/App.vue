@@ -4,11 +4,14 @@
     <Header />
   </header>
 
-  <main></main>
+  <main>
+    <Usuario />
+  </main>
 </template>
 
 <script setup>
 import Header from './components/Header.vue';
+import Usuario from './components/Usuario.vue';
 </script>
 
 <style>
