@@ -28,6 +28,6 @@ pnpm dev
 pnpm build
 ```
 
-# https://www.youtube.com/watch?v=9EPOebI-r9c&list=PLxd1RHU8YgYlF3Wk8-SW7UEowbqhBXtkp&index=4
+# https://www.youtube.com/watch?v=yfMh7XDrA_w&list=PLxd1RHU8YgYlF3Wk8-SW7UEowbqhBXtkp&index=10
 
-## 04 - Métodos | Vue 3 e Composition API
+## 10 - Props | Vue 3 e Composition API
