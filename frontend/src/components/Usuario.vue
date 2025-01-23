@@ -1,29 +1,35 @@
 <template>
-  <div>
-    <form class="formulario">
-      <label for="nome">Nome:</label><br>
-      <input type="text" id="nome" name="nome" v-model="nome"><br>
-      <label for="dataNascimento">Data Nascimento:</label><br>
-      <input type="number" id="dataNascimento" name="dataNascimento" v-model="dataNascimento"><br>
-    </form>
+  <div class="perfil">
+    <img :src="pessoa.avatar" alt="Perfil">
+    <strong>{{ first_name }}</strong>
   </div>
-  <p style="text-align: center">{{ nome }} nasceu em {{ dataNascimento }}</p>
 </template>
 
 <script setup>
-import { ref } from "vue";
-const nome = ref('Cassiano')
-const dataNascimento = ref(0)
-const idade = ref(10)
-console.log(idade.value);
+import { computed } from 'vue';
 
+// const nomeCompleto = computed(() => `${pessoa.value.first_name} ${pessoa.value.last_name}`)
+defineProps({
+  first_name: String,
+})
 </script>
 
 <style scoped>
-.formulario {
+.perfil {
+  width: 150px;
+  text-align: center;
+}
+
+.perfil img {
   margin: 0 auto;
+  width: 80px;
+  display: block;
   padding: 5px;
-  width: 200px;
-  background: darkcyan;
+  border-radius: 10px;
+}
+
+.perfil span {
+  display: block;
+  font-size: 0.75rem;
 }
 </style>

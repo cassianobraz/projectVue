@@ -1,17 +1,20 @@
 <template>
-  <NavBar />
+  <NavBar v-once />
   <header>
     <Header />
   </header>
 
   <main>
-    <Usuario />
+    <!-- <Usuario /> -->
+    <ListaUsuario />
   </main>
 </template>
 
 <script setup>
 import Header from './components/Header.vue';
 import Usuario from './components/Usuario.vue';
+import ListaUsuario from './components/ListaUsuario.vue';
+
 </script>
 
 <style>
