@@ -6,15 +6,12 @@
 
   <main>
     <!-- <Usuario /> -->
-    <ListaUsuario />
+    <router-view></router-view>
   </main>
 </template>
 
 <script setup>
 import Header from './components/Header.vue';
-import Usuario from './components/Usuario.vue';
-import ListaUsuario from './components/ListaUsuario.vue';
-
 </script>
 
 <style>
@@ -24,6 +21,7 @@ import ListaUsuario from './components/ListaUsuario.vue';
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 header {
   line-height: 1.5;
 }

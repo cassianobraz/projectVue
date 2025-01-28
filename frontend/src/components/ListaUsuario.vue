@@ -1,26 +1,80 @@
 <template>
-  <div class="pessoas">
-    <Usuario first_name="Cassiano"></Usuario>
+  <div class="selecionados">
+    <span v-for="pm in pessoasSelecionadas" :key="pm.id" class="card">{{
+      pm.first_name
+      }}</span>
+  </div>
+  <div v-if="carregando">
+    <h3>Carregando...</h3>
+  </div>
+  <div class="pessoas" v-else>
+    <div v-for="pessoa in pessoas" :key="pessoa.id" v-if="!error">
+      <button @click="redirecionaFuncionario(pessoa.id)">Ver funcionário</button>
+      <Usuario :pessoa="pessoa" :selecao="idSelecionado(pessoa.id)" @selecao="adicionaSelecao"></Usuario>
+    </div>
+    <div v-else>
+      {{ error }}
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import Usuario from './Usuario.vue';
-const pessoas = ref([])
+import { ref, computed } from "vue";
+import Usuario from "./Usuario.vue";
+import { provide } from 'vue';
+import { useFetch } from "@/composables/fetch";
+import { useRouter } from "vue-router";
 
-const buscarInformacoes = async () => {
-  const req = await fetch(`https://reqres.in/api/users?page=2`)
-  const json = await req.json()
-  return json.data
+const router = useRouter();
+
+const {
+  data: pessoas,
+  error,
+  carregando,
+} = useFetch(`https://reqres.in/api/users?page=2`);
+
+const idsSelecao = ref([]);
+const aviso = "Em caso de dúvidas contate o suporte.";
+
+const adicionaSelecao = (evento) => {
+  if (idSelecionado(evento)) {
+    idsSelecao.value = idsSelecao.value.filter((x) => x !== evento);
+    return;
+  }
+  idsSelecao.value.push(evento);
 };
 
-onMounted(async () => {
-  pessoas.value = await buscarInformacoes()
+const pessoasSelecionadas = computed(() => {
+  if (!pessoas.value) return [];
+  return pessoas.value.filter((x) => idSelecionado(x.id));
 });
+
+const idSelecionado = (id) => {
+  return idsSelecao.value.includes(id);
+};
+
+const redirecionaFuncionario = (id) => {
+  router.push(`/equipe/${id}`);
+}
+
+provide("aviso", aviso);
 </script>
 
 <style scoped>
+.selecionados {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.selecionados>span {
+  background: #6fd6d6;
+  padding: 5px;
+  font-size: 0.785rem;
+  border-radius: 5px;
+}
+
 .pessoas {
   display: flex;
   flex-wrap: wrap;

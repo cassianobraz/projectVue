@@ -1,12 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import NavBar from './components/NavBar.vue';
+import { createApp } from "vue";
+import App from "./App.vue";
+import NavBar from "./components/NavBar.vue";
+import router from "./router";
 
 const app = createApp(App);
-app.component('NavBar', NavBar);
+app.component("NavBar", NavBar);
 app.directive("email", {
   created(el, biding) {
-    el.innerHTML = `<a href="mailto:${biding.value}">S{biding.value}</a>`
+    el.innerHTML = `<a href="mailto:${biding.value}">S{biding.value}</a>`;
   },
 });
-app.mount('#app')
+app.use(router);
+app.mount("#app");

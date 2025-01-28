@@ -2,16 +2,15 @@
   <nav>
     <span>Projeto vue</span>
     <ul>
-      <li v-for="menu in menus" :key="menu.id"><a href="#">{{menu.nome}}</a></li>
+      <li v-for="menu in menus" :key="menu.id"><router-link :to="menu.path">{{ menu.nome }}</router-link></li>
     </ul>
   </nav>
 </template>
 
 <script setup>
 const menus = [
-  { id: 1, nome: 'Home' },
-  { id: 2, nome: 'Sobre' },
-  { id: 3, nome: 'Login' }
+  { id: 1, nome: 'Home', path: '/' },
+  { id: 2, nome: 'Equipe', path: '/equipe' },
 ]
 </script>
 

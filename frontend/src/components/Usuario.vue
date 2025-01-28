@@ -1,17 +1,35 @@
 <template>
   <div class="perfil">
     <img :src="pessoa.avatar" alt="Perfil">
-    <strong>{{ first_name }}</strong>
+    <strong>{{ pessoa.first_name }}</strong>
+    <span>{{ pessoa.email }}</span>
+    <button class="botao" @click="enviaEmit(pessoa.id)">{{ !selecao ? 'Selecionar' : 'Desmarcar' }}</button>
+    <Aviso />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import Aviso from './Aviso.vue';
 
-// const nomeCompleto = computed(() => `${pessoa.value.first_name} ${pessoa.value.last_name}`)
 defineProps({
-  first_name: String,
-})
+  pessoa: {
+    type: Object,
+    required: true,
+    default: () => ({
+      id: 0,
+      first_name: "",
+      last_name: "",
+      avatar: "",
+      email: "",
+    }),
+  },
+  selecao: Boolean,
+});
+const emit = defineEmits([ 'selecao' ])
+const enviaEmit = (id) => [
+  emit('selecao', id)
+];
+
 </script>
 
 <style scoped>
