@@ -28,6 +28,6 @@ pnpm dev
 pnpm build
 ```
 
-# https://www.youtube.com/watch?v=yfMh7XDrA_w&list=PLxd1RHU8YgYlF3Wk8-SW7UEowbqhBXtkp&index=10
+# https://www.youtube.com/watch?v=5E7Y8axjdzg&list=PLxd1RHU8YgYlF3Wk8-SW7UEowbqhBXtkp&index=16
 
-## 10 - Props | Vue 3 e Composition API
+## 16 - Pinia (Setup Store) | Vue 3 e Composition API
