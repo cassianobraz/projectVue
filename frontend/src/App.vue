@@ -1,17 +1,10 @@
 <template>
-  <NavBar v-once />
-  <header>
-    <Header />
-  </header>
-
-  <main>
-    <!-- <Usuario /> -->
-    <router-view></router-view>
-  </main>
+  <Visualizacao><router-view></router-view></Visualizacao>
 </template>
 
 <script setup>
-import Header from './components/Header.vue';
+import Visualizacao from './components/Visualizacao.vue';
+
 </script>
 
 <style></style>
