@@ -1,11 +1,15 @@
 <template>
   <div>
-    <h1 class="titulo">Cassiano</h1>
+    <h1 class="titulo" v-if="logado">Bem Vindo(a) {{ usuarioLogado }}</h1>
   </div>
 </template>
 
 <script setup>
+import { useLogin } from '@/store/login';
+import { storeToRefs } from 'pinia';
 
+const store = useLogin();
+const { usuarioLogado, logado } = storeToRefs(store);
 </script>
 
 <style scoped>
